@@ -2,7 +2,7 @@ main.py is entirely code written from scratch
 
 instructers.py is from instructer of the course i am doing and i changed it a bit so that instead of always  A to be same account , rigtht guess should be A
 
-improv.py is my second try to create clean code 
+improv.py is my second try to create clean code and updated that if the pick was right continuously, right account and wrong account will alternatively remain to be compared against
 
 tips:
 option must be easily decided if right or wrong by using code like 

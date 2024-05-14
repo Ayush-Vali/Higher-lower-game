@@ -18,10 +18,11 @@ def game():
     gameis=True
 
     while gameis:
-        #A is kept as acc which will not change when is correct choice but accb needs to be updated
+        #A is kept as acc which will not change when its correct choice but accb needs to be updated
+        #account a will change in further if else where accounta = accountb
         accountb=get_ran_account()
         
-        while accounta==accountb:
+        while accounta==accountb:#ensures account b wont be equal to account a
             accountb=random.choice(data)
         print(f"Compare A : {formatstring(accounta)}")
         print(f"Against B : {formatstring(accountb)}")
@@ -34,9 +35,21 @@ def game():
             score=score +1
             print(f"You're right, current score is {score}")
             
-            #now to make it so that the correct data remains
-            if guess=="b":#this to make sure if guess b is correct it shouldnt be updated
-                accounta=accountb
+            '''now to make it so that the at scores 1,3,5... correct data remains and 
+            others wrong data remains, i.e alternatively change data which is to be compared with'''
+            if score%2==1:#when score is 1,3,5...
+                if guess=="b":#when obviously(cause its in that block) guess is right "odd times/first time" & its b
+                  accounta=accountb#where account b is the winner
+                else:
+                    pass #when guess a will be right "on odd number score/first times" it will remain as it is 
+            else:#only execute if score ever becomes 2,4,6...
+                '''when guess a or b is right on second time,"second time" 
+                meaning when score will be 2,4,6 i.e this else block will be executed 
+                alternatively if guesses will be continously right '''
+                if guess=="a":
+                    accounta=accountb
+                else:
+                    pass #when guess b is right second time then wrong data i.e 'a' will remain and b will be randomized
         else:
             print(f"You lose, your final score is {score}")
     
