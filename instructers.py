@@ -36,7 +36,10 @@ def game():
   account_b = get_random_account()
 
   while game_should_continue:
-    account_a = account_b
+    #account_a = account_b#if guess is right this should not happen and account_a=account_a
+
+    ''' this randomisation aint necessary when guess!=a, as the next while loop 
+    i.e"while account_a == account_b:" will run definitely '''
     account_b = get_random_account()
 
     while account_a == account_b:
@@ -53,9 +56,18 @@ def game():
 
     clear()
     print(logo)
+    '''these two are outside since as soon as choice is mentioned, it will either print won and loop again OR loose and restart the game'''
+    
+    #if the guess is corrrect let the right guess be A & remain as it is and update B
     if is_correct:
       score += 1
       print(f"You're right! Current score: {score}.")
+      
+      if guess!= "a":
+        account_a=account_b
+      
+        
+    
     else:
       game_should_continue = False
       print(f"Sorry, that's wrong. Final score: {score}")
